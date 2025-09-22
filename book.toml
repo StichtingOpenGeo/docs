@@ -1,0 +1,6 @@
+[book]
+language = "nl"
+title = "NDOV Loket Docs"
+
+[build]
+build-dir = "out"
