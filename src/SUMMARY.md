@@ -17,7 +17,7 @@
     - [KV15](./realtime/bison/kv15.md)
     - [KV17](./realtime/bison/kv17.md)
   - [NS InfoPlus](./realtime/infoplus/README.md)
-    - [Digitale VertrekStraat](./realtime/infoplus/dvs.md)
+    - [Dynamische VertrekStraat](./realtime/infoplus/dvs.md)
     - [RitInfo](./realtime/infoplus/ritinfo.md)
     - [Treinposities](./realtime/infoplus/treinposities.md)
     - [Verstoringsinformatie](./realtime/infoplus/verstoringsinformatie.md)
