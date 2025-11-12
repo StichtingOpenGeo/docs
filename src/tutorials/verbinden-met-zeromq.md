@@ -85,9 +85,9 @@ context.term()
 | SIRI                    | tcp://pubsub.besteffort.ndovloket.nl:7666 | Nieuwe standaard voor geplande en actuele reisinformatie |
 
 > Voor gebruikers die deze databronnen in productie willen gebruiken is een aparte versie beschikbaar met een SLA.
-> Neem contact op met het loket om hier gratis toegang tot te krijgen.
+> Neem contact op met het loket om hier toegang tot te krijgen.
 
-> **Let op**: voor gratis gebruikers is maximaal *één* actieve verbinding per datafeed toegestaan.
+> **Let op**: voor NDOV gebruikers is maximaal *één* actieve verbinding per datafeed toegestaan.
 > Om meerdere projecten te ontsluiten kunnen datafeeds lokaal herdistribueert worden via [universal-sub-pubsub](https://github.com/StichtingOpenGeo/universal).
 
 6. Start het Python script:
@@ -98,4 +98,4 @@ uv run main.py
 
 Als de verbinding succesvol is ontvang je nu alle berichten op de gekozen ZeroMQ server.
 
-Krijg je errors in je terminal? In onze [Discord](https://discord.gg/gGjdt7uWQ) kunnen we je vast verder helpen.
+Krijg je fouten in je terminal? In onze [Discord](https://discord.gg/gGjdt7uWQ) kunnen we je vast verder helpen.
