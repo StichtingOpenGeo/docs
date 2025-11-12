@@ -1,8 +1,11 @@
 # Verbinden met ZeroMQ
 
-De meeste datafeeds van het NDOV Loket zijn ontsloten via het [ZeroMQ](https://zeromq.org/) protocol. Dit protocol maakt het mogelijk om een PubSub verbinding op te zetten, zodat je data automatisch gepusht krijgt zonder constant zelf nieuwe data op te hoeven halen. Voor deze basis tutorial zullen we gebruik maken van de programmeertaal Python met de [PyZMQ](https://github.com/zeromq/pyzmq) library.
+De meeste datafeeds van het NDOV Loket zijn ontsloten via het [ZeroMQ](https://zeromq.org/) protocol.
+Dit protocol maakt het mogelijk om een PubSub verbinding op te zetten, zodat je data automatisch gepusht krijgt zonder constant zelf nieuwe data op te hoeven halen.
+Voor deze basis tutorial zullen we gebruik maken van de programmeertaal Python met de [PyZMQ](https://github.com/zeromq/pyzmq) library.
 
-Allereerst moeten we er voor zorgen dat Python en PyZMQ geïnstalleerd zijn. In deze tutorial doen we dit via de package manager `uv`, maar dit kan ook met een andere package manager naar keuze.
+Allereerst moeten we er voor zorgen dat Python en PyZMQ geïnstalleerd zijn.
+In deze tutorial doen we dit via de package manager `uv`, maar dit kan ook met een andere package manager naar keuze.
 
 1. Volg de installatiestappen van [uv](https://docs.astral.sh/uv/getting-started/installation/) voor jouw besturingssysteem.
 
@@ -57,10 +60,15 @@ while True:
         # Print de tijd, het adres en de inhoud naar je terminal
         print(int(time.time()), address, contents)
 
+    except UnicodeDecodeError:
+        print("Error bij decoderen")
+        raise
+        pass
     except:
         print("Error bij decomprimeren")
         raise
         pass
+
 
 # Sluit de verbinding netjes af
 subscriber.close()
@@ -69,14 +77,18 @@ context.term()
 
 5. Vervang `{SERVER}` door de gewenste ZeroMQ server:
 
-| Datafeed                | Adres                                     | Doel                                              |
-|-------------------------|-------------------------------------------|---------------------------------------------------|
-| BISON KV6 / KV15 / KV17 | tcp://pubsub.besteffort.ndovloket.nl:7658 | Verschillende bus-tram-metro data                 |
-| BISON KV7/8 Turbo       | tcp://pubsub.besteffort.ndovloket.nl:7817 | Geplande en actuele reisinformatie bus-tram-metro |
-| NS InfoPlus             | tcp://pubsub.besteffort.ndovloket.nl:7664 | Verschillende trein data                          |
-| SIRI                    | tcp://pubsub.besteffort.ndovloket.nl:7666 | ?                                                 |
+| Datafeed                | Adres                                     | Doel                                                     |
+|-------------------------|-------------------------------------------|----------------------------------------------------------|
+| BISON KV6 / KV15 / KV17 | tcp://pubsub.besteffort.ndovloket.nl:7658 | Verschillende bus-tram-metro data                        |
+| BISON KV7/8 Turbo       | tcp://pubsub.besteffort.ndovloket.nl:7817 | Geplande en actuele reisinformatie bus-tram-metro        |
+| NS InfoPlus             | tcp://pubsub.besteffort.ndovloket.nl:7664 | Verschillende trein data                                 |
+| SIRI                    | tcp://pubsub.besteffort.ndovloket.nl:7666 | Nieuwe standaard voor geplande en actuele reisinformatie |
 
-> Voor gebruikers die deze databronnen in productie willen gebruiken is een aparte versie beschikbaar met een SLA. Neem contact op met het loket om hier gratis toegang tot te krijgen.
+> Voor gebruikers die deze databronnen in productie willen gebruiken is een aparte versie beschikbaar met een SLA.
+> Neem contact op met het loket om hier gratis toegang tot te krijgen.
+
+> **Let op**: voor gratis gebruikers is maximaal *één* actieve verbinding per datafeed toegestaan.
+> Om meerdere projecten te ontsluiten kunnen datafeeds lokaal herdistribueert worden via [universal-sub-pubsub](https://github.com/StichtingOpenGeo/universal).
 
 6. Start het Python script:
 
@@ -86,4 +98,4 @@ uv run main.py
 
 Als de verbinding succesvol is ontvang je nu alle berichten op de gekozen ZeroMQ server.
 
-Krijg je errors in je terminal? In onze [Discord]() kunnen we je vast verder helpen.
+Krijg je errors in je terminal? In onze [Discord](https://discord.gg/gGjdt7uWQ) kunnen we je vast verder helpen.
