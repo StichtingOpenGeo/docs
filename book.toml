@@ -1,6 +1,6 @@
 [book]
 language = "nl"
-title = "NDOV Loket Docs"
+title = "GOVI documentatie"
 
 [build]
 build-dir = "out"
